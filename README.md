@@ -3,7 +3,13 @@
 - Source tous le cours 8
 - https://cloud.leviia.com/s/ZnIy.3xerJBY8PDKNrBL?path=%2FProjets%2FAudio%2Fsource_separation
 
-Notre approche: Comparer seq2seq avec Unet et ConvTasnet.
+Notre approche: Comparer seq2seq avec Unet et ConvTasnet:
+- Papier 2017 = Seq2Seq: Spectrogramme + UNet - TLH
+- 2018 TasNet: remplace Spectrogramme par Encoder-Decoder; mais LSTM - Si on a le temps
+- 2019 Conv-TasNet: toujours Encoder-Decoder mais temporal convolutional network (TCN) - CVT
+
+### Choix de la loss
+Loss L1, comme dans l'article de Seq2Seq.
 
 ## Séparation de sources 
 L'objectif de ce projet est d'estimer conjointement la composante voix et la composante bruit d'un enregistrement audio.
