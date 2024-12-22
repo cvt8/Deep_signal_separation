@@ -3,7 +3,7 @@
 - Source tous le cours 8
 - https://cloud.leviia.com/s/ZnIy.3xerJBY8PDKNrBL?path=%2FProjets%2FAudio%2Fsource_separation
 
-## Séparation de sources 
+## Séparation de sources 
 L'objectif de ce projet est d'estimer conjointement la composante voix et la composante bruit d'un enregistrement audio.
 Pour ce projet vous avez : 
 
