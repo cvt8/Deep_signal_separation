@@ -3,6 +3,14 @@
 - Source tous le cours 8
 - https://cloud.leviia.com/s/ZnIy.3xerJBY8PDKNrBL?path=%2FProjets%2FAudio%2Fsource_separation
 
+Notre approche: Comparer seq2seq avec Unet et ConvTasnet:
+- Papier 2017 = Seq2Seq: Spectrogramme + UNet - TLH
+- 2018 TasNet: remplace Spectrogramme par Encoder-Decoder; mais LSTM - Si on a le temps
+- 2019 Conv-TasNet: toujours Encoder-Decoder mais temporal convolutional network (TCN) - CVT
+
+### Choix de la loss
+Loss L1, comme dans l'article de Seq2Seq.
+
 ## Séparation de sources 
 L'objectif de ce projet est d'estimer conjointement la composante voix et la composante bruit d'un enregistrement audio.
 Pour ce projet vous avez : 
@@ -15,10 +23,10 @@ Pour le train
 L'ensemble de test est constitué de la même façon. 
 
 Vous pouvez au choix travailler 
-- sur le spectrogramme par exemple en vous des approches par masquage présentés dans le cours  et en estimant les masques avec un réseau Seq2Seq de votre choix ou un UNet (cf A. Jansson et Al., SINGING VOICE SEPARATION WITH DEEP U-NET CONVOLUTIONAL NETWORK, ISMIR 2017 )
+- sur le spectrogramme par exemple en vous des approches par masquage présentés dans le cours  et en estimant les masques avec un réseau Seq2Seq de votre choix ou un UNet (cf A. Jansson et Al., SINGING VOICE SEPARATION WITH DEEP U-NET CONVOLUTIONAL NETWORK, ISMIR 2017 ) (https://openaccess.city.ac.uk/id/eprint/19289/1/7bb8d1600fba70dd79408775cd0c37a4ff62.pdf)
 - avec la méthode Deep Clustering : J.R. Hershey et Al., Deep clustering: Discriminative embeddings for segmentation and separation, ICASSP 2016
 - directement sur la forme d'onde  : 
    - cf D. Stoller  et Al., WAVE-U-NET: A MULTI-SCALE NEURAL NETWORK FOR END-TO-END AUDIO SOURCE SEPARATION, ISMIR 2018
-   - les apporches TAS NEt : Y. Luo et Al., TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation, ICASSP 2018 ou Y. Luo et Al.,  Conv-tasnet: surpassing ideal time–frequency magnitude masking for speech separation. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2019.
+   - les apporches TAS NEt : Y. Luo et Al., TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation, ICASSP 2018 ou Y. Luo et Al. (https://arxiv.org/pdf/1711.00541),  Conv-tasnet: surpassing ideal time–frequency magnitude masking for speech separation. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2019. (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8707065)
 
 Libre à vous de choisir la fonction de perte utilisée dans l’entraînement et adaptée au format des données que vous utiliserez en entrée du réseau de neurones. 
