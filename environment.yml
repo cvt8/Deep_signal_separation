@@ -1,0 +1,14 @@
+name: fista
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - matplotlib
+  - dill
+  - torch
+  - scipy
+  - jupyter
+  - pathlib
+
