@@ -1,7 +1,5 @@
 source_separation/
 *.wav
-save_*/
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

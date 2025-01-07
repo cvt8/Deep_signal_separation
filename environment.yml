@@ -14,5 +14,11 @@ dependencies:
   - cudatoolkit=11.3
   - scipy
   - jupyter
+  - tqdm
   - pathlib
+  - ipywidgets
+  - pip
+  - pip :
+    - ipympl
+    - jupyterlab
 
