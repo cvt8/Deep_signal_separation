@@ -1,32 +1,73 @@
-# Deep_signal_separation
+# Deep Signal Separation
 
-- Source tous le cours 8
-- https://cloud.leviia.com/s/ZnIy.3xerJBY8PDKNrBL?path=%2FProjets%2FAudio%2Fsource_separation
+**Authors:** Théotime le Hellard and Constantin Vaillant-Tenzer
 
-Notre approche: Comparer seq2seq avec Unet et ConvTasnet:
-- Papier 2017 = Seq2Seq: Spectrogramme + UNet - TLH
-- 2018 TasNet: remplace Spectrogramme par Encoder-Decoder; mais LSTM - Si on a le temps
-- 2019 Conv-TasNet: toujours Encoder-Decoder mais temporal convolutional network (TCN) - CVT
+## How to Run the Code
 
-### Choix de la loss
-Loss L1, comme dans l'article de Seq2Seq.
+To generate the results from our code, follow these steps:
 
-## Séparation de sources 
-L'objectif de ce projet est d'estimer conjointement la composante voix et la composante bruit d'un enregistrement audio.
-Pour ce projet vous avez : 
+1. **Clone the project repository:**  
+   ```bash
+   git clone https://github.com/cvt8/deep_signal_separation.git
+   ```
 
-Pour le train 
-- Un dossier contenant des sous dossier numérotés (exemple 0001 ou 1256)
-- Dans chaque sous dossier vous avez trois fichiers wav : mix_snr_XX.wav , voice.wav, noise.wav 
-- voice.wav et noise.wav sont les vérités terrain à estimer, mix_snr_XX.wav est le mélange des deux sources avec un SNR de XX pour la composante voix (et de -XX pour la composante bruit) 
+2. **Navigate to the repository:**  
+   ```bash
+   cd deep_signal_separation
+   ```  
+   (For Linux users)
 
-L'ensemble de test est constitué de la même façon. 
+3. **Create a new Python environment:**  
+   ```bash
+   conda env create -f environment.yml
+   ```
 
-Vous pouvez au choix travailler 
-- sur le spectrogramme par exemple en vous des approches par masquage présentés dans le cours  et en estimant les masques avec un réseau Seq2Seq de votre choix ou un UNet (cf A. Jansson et Al., SINGING VOICE SEPARATION WITH DEEP U-NET CONVOLUTIONAL NETWORK, ISMIR 2017 ) (https://openaccess.city.ac.uk/id/eprint/19289/1/7bb8d1600fba70dd79408775cd0c37a4ff62.pdf)
-- avec la méthode Deep Clustering : J.R. Hershey et Al., Deep clustering: Discriminative embeddings for segmentation and separation, ICASSP 2016
-- directement sur la forme d'onde  : 
-   - cf D. Stoller  et Al., WAVE-U-NET: A MULTI-SCALE NEURAL NETWORK FOR END-TO-END AUDIO SOURCE SEPARATION, ISMIR 2018
-   - les apporches TAS NEt : Y. Luo et Al., TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation, ICASSP 2018 ou Y. Luo et Al. (https://arxiv.org/pdf/1711.00541),  Conv-tasnet: surpassing ideal time–frequency magnitude masking for speech separation. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2019. (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8707065)
+4. **Activate the Conda environment:**  
+   ```bash
+   conda activate torch_env
+   ```
 
-Libre à vous de choisir la fonction de perte utilisée dans l’entraînement et adaptée au format des données que vous utiliserez en entrée du réseau de neurones. 
+5. **Prepare your data:**  
+   - Create a folder named `source_separation` in the project directory.
+   - Add your signals to this folder. For example, you can use the files (after decompressing) available at the following link:  
+     [Source Separation Files](https://cloud.leviia.com/s/ZnIy.3xerJBY8PDKNrBL?path=%2FProjets%2FAudio%2Fsource_separation)
+
+6. **Run the Jupyter Notebook:**  
+   Open and execute `source_separation_TLH_CVT.ipynb` in your environment.
+
+---
+
+## Our Approach
+
+We compared different deep learning architectures for audio source separation:
+
+### Seq2Seq with UNet and ConvTasNet
+
+- **2017 Seq2Seq (Spectrogram + UNet):** Based on the paper: "SINGING VOICE SEPARATION WITH DEEP U-NET CONVOLUTIONAL NETWORK" by A. Jansson et al. ([Paper Link](https://openaccess.city.ac.uk/id/eprint/19289/1/7bb8d1600fba70dd79408775cd0c37a4ff62.pdf)) — Implemented by TLH.
+
+- **2018 TasNet:** Replaces the spectrogram with an encoder-decoder approach but uses LSTM. Explored if time permits.
+
+- **2019 Conv-TasNet:** An encoder-decoder approach combined with a Temporal Convolutional Network (TCN). Implemented by CVT.
+
+### Loss Function
+
+- We used the L1 loss as proposed in the Seq2Seq paper.
+- For Conv-TasNet, we also experimented with the loss function recommended in the original paper.
+
+---
+
+## Source Separation
+
+The goal of this project is to jointly estimate the voice and noise components from an audio recording. The dataset provided includes:
+
+### Training Set
+
+- A folder containing numbered subfolders (e.g., `0001`, `1256`).
+- Each subfolder contains three `.wav` files:
+  - `mix_snr_XX.wav`: The mixture of the two sources with an SNR of XX for the voice component (and -XX for the noise component).
+  - `voice.wav`: The ground truth voice signal.
+  - `noise.wav`: The ground truth noise signal.
+
+### Test Set
+
+The test set is structured in the same way as the training set.
